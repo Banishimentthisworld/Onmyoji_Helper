@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>532</width>
+    <height>835</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QHBoxLayout" name="horizontalLayout_2">
+    <item>
+     <layout class="QGridLayout" name="Layout_Background">
+      <item row="1" column="0">
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_3">
+          <item>
+           <widget class="QGroupBox" name="GB_ToolAndPara">
+            <property name="title">
+             <string/>
+            </property>
+            <layout class="QHBoxLayout" name="horizontalLayout_4">
+             <item>
+              <widget class="QGroupBox" name="GB_Tool">
+               <property name="title">
+                <string>操作</string>
+               </property>
+               <layout class="QVBoxLayout" name="verticalLayout">
+                <item>
+                 <widget class="QGroupBox" name="GB_JCKZ">
+                  <property name="title">
+                   <string>进程控制</string>
+                  </property>
+                  <layout class="QGridLayout" name="gridLayout_2">
+                   <item row="1" column="0" alignment="Qt::AlignLeft">
+                    <widget class="QPushButton" name="bn_Stop">
+                     <property name="text">
+                      <string>暂停</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="2" column="0" alignment="Qt::AlignLeft">
+                    <widget class="QPushButton" name="bn_Out">
+                     <property name="text">
+                      <string>退出</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="0" column="0" alignment="Qt::AlignLeft">
+                    <widget class="QPushButton" name="bn_Start">
+                     <property name="text">
+                      <string>开始</string>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QGroupBox" name="GB_MSXZ">
+                  <property name="title">
+                   <string>模式选择</string>
+                  </property>
+                  <layout class="QGridLayout" name="gridLayout">
+                   <item row="1" column="0" alignment="Qt::AlignVCenter">
+                    <widget class="QLabel" name="label_3">
+                     <property name="text">
+                      <string>组队模式</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="2" column="2" alignment="Qt::AlignVCenter">
+                    <widget class="QComboBox" name="cbx_KZMS">
+                     <item>
+                      <property name="text">
+                       <string>前台</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>后台</string>
+                      </property>
+                     </item>
+                    </widget>
+                   </item>
+                   <item row="2" column="0" alignment="Qt::AlignLeft|Qt::AlignVCenter">
+                    <widget class="QLabel" name="label_2">
+                     <property name="text">
+                      <string>控制模式</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="0" column="0" alignment="Qt::AlignLeft|Qt::AlignVCenter">
+                    <widget class="QLabel" name="label">
+                     <property name="text">
+                      <string>副本类型  </string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="0" column="2" alignment="Qt::AlignVCenter">
+                    <widget class="QComboBox" name="cbx_FBLX">
+                     <item>
+                      <property name="text">
+                       <string>魂十</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>魂十一</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>探索</string>
+                      </property>
+                     </item>
+                    </widget>
+                   </item>
+                   <item row="1" column="2">
+                    <widget class="QComboBox" name="cbx_ZDMS">
+                     <item>
+                      <property name="text">
+                       <string>单人</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>双人</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>多人</string>
+                      </property>
+                     </item>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item>
+              <widget class="QGroupBox" name="GB_Para">
+               <property name="title">
+                <string>参数</string>
+               </property>
+               <layout class="QVBoxLayout" name="verticalLayout_2">
+                <item>
+                 <widget class="QGroupBox" name="groupBox">
+                  <property name="title">
+                   <string/>
+                  </property>
+                  <layout class="QHBoxLayout" name="horizontalLayout_8">
+                   <item>
+                    <widget class="QPushButton" name="bn_SaveIni">
+                     <property name="text">
+                      <string>保存配置</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QPushButton" name="bn_LoadIni">
+                     <property name="text">
+                      <string>加载配置</string>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QGroupBox" name="GB_Set">
+                  <property name="title">
+                   <string>设置</string>
+                  </property>
+                  <layout class="QHBoxLayout" name="horizontalLayout_6">
+                   <item>
+                    <widget class="QTabWidget" name="tabWidget">
+                     <property name="currentIndex">
+                      <number>0</number>
+                     </property>
+                     <widget class="QWidget" name="tab">
+                      <attribute name="title">
+                       <string>采集</string>
+                      </attribute>
+                      <layout class="QGridLayout" name="gridLayout_3">
+                       <item row="0" column="0">
+                        <widget class="QCheckBox" name="ckb_Resize">
+                         <property name="text">
+                          <string>缩放</string>
+                         </property>
+                         <property name="checked">
+                          <bool>false</bool>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="4" column="0">
+                        <widget class="QCheckBox" name="ckb_Rate">
+                         <property name="text">
+                          <string>帧率</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="4" column="1">
+                        <widget class="QSlider" name="sil_Rate">
+                         <property name="minimum">
+                          <number>1</number>
+                         </property>
+                         <property name="maximum">
+                          <number>60</number>
+                         </property>
+                         <property name="orientation">
+                          <enum>Qt::Horizontal</enum>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="0" column="1">
+                        <widget class="QSlider" name="sil_Resize">
+                         <property name="minimum">
+                          <number>20</number>
+                         </property>
+                         <property name="maximum">
+                          <number>100</number>
+                         </property>
+                         <property name="orientation">
+                          <enum>Qt::Horizontal</enum>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="5" column="0">
+                        <widget class="QLabel" name="label_5">
+                         <property name="text">
+                          <string>游戏窗口：</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="5" column="1">
+                        <widget class="QComboBox" name="cbx_hwnd"/>
+                       </item>
+                      </layout>
+                     </widget>
+                     <widget class="QWidget" name="tab_2">
+                      <attribute name="title">
+                       <string>魂十</string>
+                      </attribute>
+                     </widget>
+                     <widget class="QWidget" name="tab_3">
+                      <attribute name="title">
+                       <string>魂十一</string>
+                      </attribute>
+                      <layout class="QGridLayout" name="gridLayout_4">
+                       <item row="0" column="0">
+                        <widget class="QCheckBox" name="ckb_H11_Buff">
+                         <property name="text">
+                          <string>开启御魂buff</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="1" column="0">
+                        <widget class="QCheckBox" name="ckb_H11_TeamLeader">
+                         <property name="text">
+                          <string>是否为队长</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="2" column="0">
+                        <widget class="QLabel" name="label_4">
+                         <property name="text">
+                          <string>   组队人数：</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="2" column="1">
+                        <widget class="QLineEdit" name="txt_H11_TeamNum"/>
+                       </item>
+                       <item row="3" column="0">
+                        <widget class="QLabel" name="label_6">
+                         <property name="text">
+                          <string>   挑战次数：</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="3" column="1">
+                        <widget class="QLineEdit" name="txt_H11_Times"/>
+                       </item>
+                      </layout>
+                     </widget>
+                     <widget class="QWidget" name="tab_4">
+                      <attribute name="title">
+                       <string>探索</string>
+                      </attribute>
+                     </widget>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QGroupBox" name="GB_Output">
+                  <property name="title">
+                   <string>输出</string>
+                  </property>
+                  <layout class="QHBoxLayout" name="horizontalLayout_5">
+                   <item>
+                    <widget class="QTextBrowser" name="txt_Result"/>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="lab_Img">
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;:/背景/back.jpg&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>532</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menu">
+    <property name="title">
+     <string>菜单</string>
+    </property>
+    <addaction name="bn_Exit"/>
+   </widget>
+   <widget class="QMenu" name="menu_2">
+    <property name="title">
+     <string>设置</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menu_3">
+    <property name="title">
+     <string>帮助</string>
+    </property>
+   </widget>
+   <addaction name="menu"/>
+   <addaction name="menu_2"/>
+   <addaction name="menu_3"/>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <action name="bn_Exit">
+   <property name="text">
+    <string>退出</string>
+   </property>
+  </action>
+ </widget>
+ <resources>
+  <include location="Onmyoji_Rcc.qrc"/>
+ </resources>
+ <connections/>
+</ui>
