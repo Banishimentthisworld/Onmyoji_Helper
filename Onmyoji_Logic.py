@@ -168,6 +168,25 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             else:
                 para_Rate = 30
 
+            cv2.rectangle(img_Oimyoji,(int(img_img_Oimyoji_w * 0.39),int(img_img_Oimyoji_h * 0.18)), (int(img_img_Oimyoji_w * 0.95),int(img_img_Oimyoji_h * 0.87)), (0,255,0), 1)
+            # 输出控制信息
+            # 流程状态输出
+            font = ImageFont.truetype(fontPath,int(h/25))
+            img_Pil = Image.fromarray(img_Oimyoji)
+            draw = ImageDraw.Draw(img_Pil)
+            fontText_Mod = "副本类型：" + self.cbx_FBLX.currentText()
+            draw.text((10, int(h *  para_Resize / 100) - int(h/25*2.5)), fontText_Mod, font=font, fill=(0, 255, 0))
+
+            # 控制模式输出
+            fontText_CtrlMod = "控制模式：" + self.cbx_KZMS.currentText()
+            draw.text((10, int(h * para_Resize / 100) - int(h/25*4)), fontText_CtrlMod, font=font, fill=(0, 255, 0))
+
+            # 采集参数输出
+            txtOutpput_FPS = "FPS: " + str(para_Rate)
+            txtOutpput_Resize = "缩放尺寸: (" + str(w * para_Resize / 100) + " x " + str(h * para_Resize / 100) + " )"
+            draw.text((10, 20), txtOutpput_FPS, font=font, fill=(0, 255, 0))
+            draw.text((10, 50), txtOutpput_Resize, font=font, fill=(0, 255, 0))
+
             # 图像处理：魂十一
             if self.cbx_FBLX.currentIndex() == 1:
                 img_H11 = img_Oimyoji
@@ -179,47 +198,25 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
                 img_H11_Result = cv2.subtract(img_H11_B, img_H11_ROI0)
 
                 ret, img_H11_Result = cv2.threshold(img_H11_Result, 180, 255, cv2.THRESH_BINARY)
-                H11_Avg = (np.sum(img_H11_Result) / (len(img_H11_Result) * len(img_H11_Result[0])))
+                H11_Avg = round((np.sum(img_H11_Result) / (len(img_H11_Result) * len(img_H11_Result[0]))), 3)
 
                 if flag_H11 == 1:
+                    img_H11_Test = img_Oimyoji
 
-                    img_H11 = img_Oimyoji
-                    img_H11_B = img_H11[:, :, 0]
-                    img_H11_ROI0 = img_H11_B.copy()
-                    img_H11_ROI0.fill(255)
-                    cv2.rectangle(img_H11_ROI0, (int(img_img_Oimyoji_w * 0.39), int(img_img_Oimyoji_h * 0.18)),
-                                  (int(img_img_Oimyoji_w * 0.95), int(img_img_Oimyoji_h * 0.87)), (0, 0, 0), -1)
-                    img_H11_Result = cv2.subtract(img_H11_B,img_H11_ROI0)
-
-                    ret, img_H11_Result = cv2.threshold(img_H11_Result, 180, 255, cv2.THRESH_BINARY)
+                    ret, img_H11_Result = cv2.threshold(img_H11, 180, 255, cv2.THRESH_BINARY)
                     H11_Avg = (np.sum(img_H11_Result) / (len(img_H11_Result) * len(img_H11_Result[0])))
                     print(H11_Avg)
 
                     flag_H11 = 0
 
+                txtH11Result = "检测值：" + str(H11_Avg)
+                draw.text((10, int(h * para_Resize / 100) - int(h / 25 * 7)), txtH11Result, font=font, fill=(0, 255, 0))
+                if H11_Avg > 57 and H11_Avg < 61 :
+                    txth11_LC = "流程：巫女大蛇界面"
+                else:
+                    txth11_LC = "流程：其他"
+                draw.text((10, int(h * para_Resize / 100) - int(h / 25 * 5.5)), txth11_LC, font=font, fill=(0, 255, 0))
 
-
-            cv2.rectangle(img_Oimyoji,(int(img_img_Oimyoji_w * 0.39),int(img_img_Oimyoji_h * 0.18)), (int(img_img_Oimyoji_w * 0.95),int(img_img_Oimyoji_h * 0.87)), (0,255,0), 1)
-            # 输出控制信息
-            # 流程状态输出
-            font = ImageFont.truetype(fontPath,int(h/25))
-            img_Pil = Image.fromarray(img_Oimyoji)
-            draw = ImageDraw.Draw(img_Pil)
-            fontText_Mod = "副本内容：" + self.cbx_FBLX.currentText()
-            draw.text((10, int(h *  para_Resize / 100) - int(h/25*2.5)), fontText_Mod, font=font, fill=(0, 255, 0))
-
-            # 控制模式输出
-            fontText_CtrlMod = "控制模式：" + self.cbx_KZMS.currentText()
-            draw.text((10, int(h * para_Resize / 100) - int(h/25*4)), fontText_CtrlMod, font=font, fill=(0, 255, 0))
-
-            # 采集参数输出
-            txtOutpput_FPS = "FPS: " + str(para_Rate)
-            txtOutpput_Resize = "缩放尺寸: (" + str(w * para_Resize/100) + " x " + str(h * para_Resize/100) + " )"
-            draw.text((10, 20), txtOutpput_FPS, font=font, fill=(0, 255, 0))
-            draw.text((10, 50), txtOutpput_Resize, font=font, fill=(0, 255, 0))
-
-            txtH11Result = "检测值：" + str(H11_Avg)
-            draw.text((10, int(h * para_Resize / 100) - int(h / 25 * 5.5)), txtH11Result, font=font, fill=(0, 255, 0))
             # font = cv2.FONT_HERSHEY_SIMPLEX
             # cv2.putText(img_Oimyoji, txtOutpput_FPS, (10, 20), font, 0.7, (0, 255, 0), 2)
             # cv2.putText(img_Oimyoji, txtOutpput_Resize, (10, 50), font, 0.7, (0, 255, 0), 2)
