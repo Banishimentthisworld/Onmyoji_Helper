@@ -147,6 +147,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
     def callback(self,img_Oimyoji,h,w):
         global para_Rate,para_Resize,fontPath,flag_H11,H11_Avg
+        img_Oimyoji_Origin = img_Oimyoji.copy()
 
         if h != 0 and w != 0:
 
@@ -187,6 +188,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             draw.text((10, 20), txtOutpput_FPS, font=font, fill=(0, 255, 0))
             draw.text((10, 50), txtOutpput_Resize, font=font, fill=(0, 255, 0))
 
+
             # 图像处理：魂十一
             if self.cbx_FBLX.currentIndex() == 1:
                 img_H11 = img_Oimyoji
@@ -201,9 +203,25 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
                 H11_Avg = round((np.sum(img_H11_Result) / (len(img_H11_Result) * len(img_H11_Result[0]))), 3)
 
                 if flag_H11 == 1:
-                    img_H11_Test = img_Oimyoji
+                    img_H11_Test = img_Oimyoji_Origin
+                    img_H11_R = img_H11_Test[:, :, 2]
+                    img_H11_ROI1 = img_H11_R.copy()
+                    img_H11_ROI1.fill(255)
+                    cv2.rectangle(img_H11_ROI1, (int(img_img_Oimyoji_w * 0.72), int(img_img_Oimyoji_h * 0.78)),
+                                  (int(img_img_Oimyoji_w ), int(img_img_Oimyoji_h )), (0, 0, 0), -1)
+                    img_H11_Result2 = cv2.subtract(img_H11_R, img_H11_ROI1)
+                    ret, img_H11_Result2= cv2.threshold(img_H11_Result2, 180, 255, cv2.THRESH_BINARY)
+                    img_H11_Result2_Output = cv2.cvtColor(img_H11_Result2,cv2.COLOR_GRAY2BGR)
+                    binary, contours, hierarchy = cv2.findContours(img_H11_Result2, cv2.RETR_LIST, cv2.CHAIN_APPROX_NONE)
+                    for i in range(len(contours)):
+                        arcLength = cv2.arcLength(contours[i], True)
+                        if arcLength > (w * 0.25):
+                            (x, y), radius = cv2.minEnclosingCircle(contours[i])
+                            center = (int(x), int(y))
+                            cv2.circle(img_H11_Result2_Output, center, int(radius), (0, 255, 0), 2)
+                            # cv2.drawContours(img_H11_Result2_Output, contours, i, (0,255,0), 1)
+                    cv2.imshow("img",img_H11_Result2_Output )
 
-                    ret, img_H11_Result = cv2.threshold(img_H11, 180, 255, cv2.THRESH_BINARY)
                     H11_Avg = (np.sum(img_H11_Result) / (len(img_H11_Result) * len(img_H11_Result[0])))
                     print(H11_Avg)
 
